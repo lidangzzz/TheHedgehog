@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/node": "^12.7.2",
+    "assert": "^2.0.0",
     "babel-core": "^6.26.3",
-    "babel-plugin-overload": "0.0.2"
+    "babel-plugin-overload": "0.0.2",
+    "gpu.js": "^2.0.0-rc.26"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
