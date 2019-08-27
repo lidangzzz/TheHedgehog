@@ -164,19 +164,6 @@ function xT_mul_x(inMat: mat): mat {
     return returnMat;
 }
 
-export class op {
-    add = add;
-    addInPlace = addInPlace;
-    minus = minus;
-    minusInPlace = minusInPlace;
-    mul = mul;
-    mulInPlace = mulInPlace;
 
-    mul_gpu = mul_gpu;
-    x_mul_xT = x_mul_xT;
-    xT_mul_x = xT_mul_x;
-    dotMul = dotMul;
-    dotMulInPlace = dotMulInPlace;
-};
 
 export { add, addInPlace, minus, minusInPlace, mul, mulInPlace, mul_gpu, x_mul_xT, xT_mul_x, dotMul, dotMulInPlace};

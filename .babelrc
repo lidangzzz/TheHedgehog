@@ -1,4 +1,20 @@
 {
+    "presets": [
+      ["@babel/env", {
+        "targets": {
+          "browsers": ["last 2 versions"]
+      }],
+      "@babel/typescript"
+    ],
+    "plugins": ["@babel/plugin-transform-typescript", "overload"]
+}
+
+
+/* original
+
+{
     "presets": ["@babel/preset-typescript"],
     "plugins": ["@babel/plugin-transform-typescript", "overload"]
 }
+
+*/
