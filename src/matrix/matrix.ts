@@ -1,5 +1,4 @@
-﻿import { error, isNull } from "util";
-import * as m from "../app";
+﻿import * as m from "../app";
 
 
 class mat {
@@ -53,7 +52,7 @@ class mat {
     range(arg1: number, arg2 = null, step = 1): mat {
         var rangeVector = [];
         var start = 0, end = 0;
-        if (isNull(arg2)) { start = 0; end = arg1; } // range from 0 to arg1 
+        if (arg2==null) { start = 0; end = arg1; } // range from 0 to arg1 
         else { start = arg1; end = arg2; } //range from arg1 to arg2
         if (start < end) {
             for (var iterator = start; iterator < end; iterator += step) {
@@ -361,7 +360,10 @@ class mat {
         return ret;
     }
 
-    //output log to console
+    //return the format of matrix as a CSV string
+    toString():string{ return m.mat2csv(this); }
+
+    //output the whole information to console
     log(): mat { console.log(this); return this; }  //output in console
 }
 

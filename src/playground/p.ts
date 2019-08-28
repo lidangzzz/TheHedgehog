@@ -28,7 +28,7 @@ var b = new m.mat([4,5,6]).T();
 //console.log(a*100);
 //console.log( a + a );
 var v1 = new m.mat(5);
-console.log(v1* (b.T()) );
+console.log( new m.mat().range(10).reshape(3,3).toString() );
 
 while(1){}
 
