@@ -27,8 +27,12 @@ var b = new m.mat([4,5,6]).T();
 
 //console.log(a*100);
 //console.log( a + a );
-var v1 = new m.mat(5);
-console.log( new m.mat().range(10).reshape(3,3).toString() );
+var v1 = new m.mat().range(101).reshape(10,10);
+v1.GPU = true;
+
+var v1_sqr = v1*v1;
+
+console.log(v1_sqr.toString());
 
 while(1){}
 
