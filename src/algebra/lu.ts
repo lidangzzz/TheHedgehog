@@ -1,5 +1,4 @@
 ﻿import { mat } from "../matrix/matrix";
-import { op as op_ } from "../matrix/operator";
 
 //this is an implementation of LUP decomposition using CPU
 class LUresult {

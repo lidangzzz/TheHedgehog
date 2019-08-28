@@ -97,3 +97,6 @@ lib/ndarray/ndarray.js
 lib/playground/p.js
 lib/stats/zScoreOfMat.js
 lib/unitTest.js
+lib/ml/linearRegression.js
+lib/matrix/matrix.js
+lib/playground/p.js

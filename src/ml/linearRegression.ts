@@ -1,8 +1,8 @@
 ﻿import { mat } from '../matrix/matrix';
-import { op as op_ } from '../matrix/operator';
+import * as op from '../app';
 import { inverse } from '../algebra/inverse';
 
-var op = new op_();
+
 //reference: https://zhuanlan.zhihu.com/p/25434586
 //api design: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 //https://www.mathworks.com/matlabcentral/fileexchange/64930-linear-regression-simplest-implementation

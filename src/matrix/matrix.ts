@@ -1,6 +1,6 @@
 ﻿import { error, isNull } from "util";
-import { op as _op } from "./operator";
-var op = new _op();
+import * as m from "../app";
+
 
 class mat {
     val: number[][]; rows: number; cols: number;
@@ -158,11 +158,75 @@ class mat {
     minuss(val: number): mat { return this.adds(val * (-1)); }
     divs(val: number): mat { return this.muls(1.0 / val); }
 
-    //matrix operations. All matrix operation member functions are In Place
-    add(rightMat: mat): mat { return op.add(this, rightMat); }
-    minus(rightMat: mat): mat { return op.minus(this, rightMat); }
-    mul(rightMat: mat): mat { return op.mul(this, rightMat); }
-    mul_gpu(rightMat: mat): mat { var result = op.mul_gpu(this, rightMat); this.copy(result); return this; }
+    //matrix operations. All matrix operation member functions are NOT In Place
+    add(rightMat: mat): mat { return m.add(this, rightMat); }
+    minus(rightMat: mat): mat { return m.minus(this, rightMat); }
+    mul(rightMat: mat): mat { return m.mul(this, rightMat); }
+    mul_gpu(rightMat: mat): mat { var result = m.mul_gpu(this, rightMat); this.copy(result); return this; }
+
+    [Symbol.for('+')] (rightOperand: mat | number | number[] | number[][]): mat {
+        //if right operand is a raw array of number or 2D array, initialize the matrix first
+        if (Array.isArray(rightOperand)){
+            return this.add(new mat(rightOperand));
+        } 
+        
+        //if right operand is a number, add the number as a scalar
+        if (typeof rightOperand == 'number'){
+            return this.adds(rightOperand);
+        }
+        //otherwise, add the right operand as a matrix
+        return this.add(rightOperand);
+    }
+
+    [Symbol.for('-')] (rightOperand: mat | number| number[] | number[][]): mat {
+        //if right operand is a raw array of number or 2D array, initialize the matrix first
+        if (Array.isArray(rightOperand)){
+            return this.minus(new mat(rightOperand));
+        } 
+        //if right operand is a number, minus the number as a scalar
+        if (typeof rightOperand == 'number'){
+            return this.minuss(rightOperand);
+        }
+        //otherwise, minus the right operand as a matrix
+        return this.clone().minus(rightOperand);
+    }
+
+    [Symbol.for('*')] (rightOperand: mat | number| number[] | number[][]): mat {
+        
+        //if right operand is a raw array of number or 2D array, initialize the matrix first
+        if (Array.isArray(rightOperand)){
+            return this.mul(new mat(rightOperand));
+        } 
+
+        //if right operand is a number, mul the number as a scalar
+        if (typeof rightOperand == 'number'){
+            return this.muls(rightOperand);
+        }
+        //otherwise, minus the right operand as a matrix
+        return this.mul(rightOperand);
+    }
+
+
+    [Symbol.for('^')] (rightOperand: number): mat {
+
+        if (this.rows != this.cols) throw new Error("This matrix does not support ^ operator");
+        //if right operand is -1, return the inverse matrix
+        if (rightOperand == -1){
+            return m.inverse(this);
+        }
+        
+        //check if rightOperand is an integer
+        if (!Number.isInteger(rightOperand) || rightOperand<1) throw new Error("This right operand does not support ^ operator");
+
+        var returnMatrix = this.clone();
+        for (var i =2;i<= rightOperand; i++){
+            m.mulInPlace(returnMatrix, this);
+        }
+
+        return returnMatrix;
+    }
+
+    
 
     //setter and getter
     set(row: number, col: number, val: number): mat { this.dimCheck(row, col); this.val[row][col] = val; return this; }

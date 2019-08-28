@@ -22,6 +22,13 @@ var mat_str = `
 
 var mat = m.read(mat_str);
 
+var a = new m.mat([[1,2,3],[3,4,4], [7,8,9]]);
+
+console.log(a*[1,2,3]);
+console.log( a + a );
+
+while(1){}
+
 var x = mat.getCols(0, 2);
 var y = mat.getCols(2, 3);
 

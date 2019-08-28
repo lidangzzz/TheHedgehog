@@ -1,5 +1,4 @@
-﻿import { mat } from '../matrix/matrix';
-import { op } from '../matrix/operator';
+﻿import * as m from '../app';
 import 'assert';
 
 export function machineLearningTest() {
