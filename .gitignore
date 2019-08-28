@@ -100,3 +100,6 @@ lib/unitTest.js
 lib/ml/linearRegression.js
 lib/matrix/matrix.js
 lib/playground/p.js
+lib/playground/p.js
+lib/matrix/operator.js
+lib/matrix/matrix.js

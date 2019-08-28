@@ -22,10 +22,13 @@ var mat_str = `
 
 var mat = m.read(mat_str);
 
-var a = new m.mat([[1,2,3],[3,4,4], [7,8,9]]);
+var a = new m.mat([1,2,3]);
+var b = new m.mat([4,5,6]).T();
 
-console.log(a*[1,2,3]);
-console.log( a + a );
+//console.log(a*100);
+//console.log( a + a );
+var v1 = new m.mat(5);
+console.log(v1* (b.T()) );
 
 while(1){}
 

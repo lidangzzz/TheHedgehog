@@ -33,7 +33,7 @@ function minusInPlace(leftMatrix: mat, rightMatrix: mat): mat {
 
 //leftMatrix - rightMatrix, save the result into a new matrix
 function minus(leftMat: mat, rightMat: mat): mat {
-    return this.addInPlace(leftMat.clone(), rightMat);
+    return this.minusInPlace(leftMat.clone(), rightMat);
 }
 
 

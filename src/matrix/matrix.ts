@@ -3,10 +3,17 @@ import * as m from "../app";
 
 
 class mat {
-    val: number[][]; rows: number; cols: number;
+    val: number[][]; rows: number; cols: number; GPU:boolean;
     clear() { this.val = []; this.rows = 0; this.cols = 0; return this; }
-    constructor(input?: number[][] | number[]) {
+    constructor(input?: number[][] | number[]| number) {
+        this.GPU = false;
         this.val = []; this.rows = 0; this.cols = 0;
+        if (typeof input == 'number'){
+            this.val = [[input]];
+            this.rows = 1;
+            this.cols = 1;
+            return this;
+        }
         if (Array.isArray(input)) {
             //if input is an 2D array
             if (Array.isArray(input[0])) {
@@ -69,14 +76,10 @@ class mat {
     // initialize a matrix by copying from another matrix
     copy(inputMat: mat): mat { this.init(inputMat.val); this.cols = inputMat.cols; this.rows = inputMat.rows; return this; }
 
-    equals(inMat: mat): boolean {
+    equals(inMat: mat, EPSILON=0.0001): boolean {
         if (this.cols != inMat.cols || this.rows != inMat.rows) return false;
-        for (var i = 0; i < this.rows; i++) {
-            for (var j = 0; j < this.cols; j++) {
-                if (this.val[i][j] != inMat.val[i][j]) return false;
-            }
-        }
-        return true;
+        var sumOfDiff = this.minus(inMat).squareSum();
+        return (sumOfDiff<= EPSILON);
     }
 
     //initialze an row-by-col matrix with all elements are N
@@ -161,7 +164,12 @@ class mat {
     //matrix operations. All matrix operation member functions are NOT In Place
     add(rightMat: mat): mat { return m.add(this, rightMat); }
     minus(rightMat: mat): mat { return m.minus(this, rightMat); }
-    mul(rightMat: mat): mat { return m.mul(this, rightMat); }
+    mul(rightMat: mat): mat { 
+        if (this.GPU == false && rightMat.GPU == false){
+            return m.mul(this, rightMat); 
+        }
+        return m.mul_gpu(this, rightMat);
+    }
     mul_gpu(rightMat: mat): mat { var result = m.mul_gpu(this, rightMat); this.copy(result); return this; }
 
     [Symbol.for('+')] (rightOperand: mat | number | number[] | number[][]): mat {
@@ -192,10 +200,11 @@ class mat {
     }
 
     [Symbol.for('*')] (rightOperand: mat | number| number[] | number[][]): mat {
-        
+
         //if right operand is a raw array of number or 2D array, initialize the matrix first
         if (Array.isArray(rightOperand)){
-            return this.mul(new mat(rightOperand));
+            var rightOperandMatrix = new mat(rightOperand);
+            return this.mul(rightOperandMatrix);
         } 
 
         //if right operand is a number, mul the number as a scalar
@@ -224,6 +233,26 @@ class mat {
         }
 
         return returnMatrix;
+    }
+
+    [Symbol.for('==')] (rightOperand: mat | number| number[] | number[][], EPSILON=0.0001): boolean {
+
+        //if right operand is a raw array of number or 2D array, initialize the matrix first
+        if (Array.isArray(rightOperand)){
+            var rightOperandMatrix = new mat(rightOperand);
+            return this.equals(rightOperandMatrix);
+        } 
+
+        //if right operand is a number, mul the number as a scalar
+        else if (typeof rightOperand == 'number'){
+            if (this.rows != 1 || this.cols != 1)
+            {
+                throw new Error("This matrix cannot be compared with a scalar");
+            }
+            return (this.val[0][0] - rightOperand)*(this.val[0][0] - rightOperand) < EPSILON;
+        }
+        //otherwise, minus the right operand as a matrix
+        return this.equals(rightOperand);
     }
 
     
