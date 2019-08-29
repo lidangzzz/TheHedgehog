@@ -1,7 +1,7 @@
 ﻿import { mat } from './matrix';
 import './operator';
 import {mean, std } from './vector';
-import 'assert';//assert = require('assert');
+var assert = require('assert');
 
 export function matrixTest() {
     matrixAllocationTest();

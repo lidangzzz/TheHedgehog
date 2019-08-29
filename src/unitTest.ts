@@ -1,6 +1,6 @@
-﻿import { matrixTest } from "./matrix/matrixUnitTest";
+﻿import * as matrixUnitTest from "./matrix/matrixUnitTest";
 
-matrixTest();
+matrixUnitTest.matrixTest();
 
 console.log("All unit tests pass.");
 while (1) { }
