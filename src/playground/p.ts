@@ -22,24 +22,12 @@ var mat_str = `
 
 var mat = m.read(mat_str);
 
-var a = new m.mat([1,2,3]);
-var b = new m.mat([4,5,6]).T();
+var x = mat.getCols(0,2).log();
+var y = mat.getCols(2,3).log();
 
-//console.log(a*100);
-//console.log( a + a );
-var v1 = new m.mat().range(101).reshape(10,10);
-v1.GPU = true;
+var logisticRegression = new LogisticRegression();
+logisticRegression.fit(x,y);
 
-var v1_sqr = v1*v1;
+console.log(logisticRegression);
 
-console.log(v1_sqr.toString());
-
-while(1){}
-
-var x = mat.getCols(0, 2);
-var y = mat.getCols(2, 3);
-
-var lr = new LogisticRegression();
-lr.fit(x, y);
-
-while (1) { }
+while(true) {}

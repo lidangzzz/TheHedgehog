@@ -40,6 +40,7 @@ class LogisticRegression {
             J = -(1 / m_) * jsum;
             th.add( this.x.T().muls(this.alpha / this.x.rows).mul(this.y.clone().minus(h)) );
         }
+
     }
 
 }

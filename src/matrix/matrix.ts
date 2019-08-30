@@ -293,19 +293,17 @@ class mat {
     //resize matrix to a smaller matrix [rowStart , rowEnd), [colStart , colEnd)
     //All extra spaces will be filled with zero
     subMatrix(rowStart: number, rowEnd: number, colStart: number, colEnd: number): mat {
-        rowEnd += 1;
-        colEnd += 1;
 
-        if (rowStart < 0 || rowEnd > this.rows+1 || colStart < 0 || colEnd > this.cols+1 || rowStart > rowEnd || colStart > colEnd) {
+        if (rowStart < 0 || rowEnd > this.rows || colStart < 0 || colEnd > this.cols || rowStart > rowEnd || colStart > colEnd) {
             throw new Error("Please check the dimensions of subMatrix");
         }
 
         
         var returnMatrix = new mat().zeros(rowEnd - rowStart, colEnd - colStart);
 
-        for (var i = rowStart; i <= rowEnd; i++) {
+        for (var i = rowStart; i < rowEnd; i++) {
             var row_index_of_return_matrix = i - rowStart;
-            for (var j = colStart; j <= colEnd; j++) {
+            for (var j = colStart; j < colEnd; j++) {
                 var col_index_of_return_matrix = j - colStart;
                 returnMatrix.val[row_index_of_return_matrix][col_index_of_return_matrix] = this.val[i][j];
             }
