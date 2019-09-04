@@ -1,6 +1,8 @@
 ﻿import { mat } from "../matrix/matrix";
 
-//this is an implementation of LUP decomposition using CPU
+//this is an implementation of LUP decomposition using CPU by Math.js (https://github.com/josdejong/mathjs)
+//reference: https://github.com/josdejong/mathjs/blob/d8a4f3a00a5e61383ac72ea5509ff69cdcbdf6be/src/function/algebra/decomposition/lup.js
+
 class LUresult {
     L: mat; U: mat; p: mat;
     constructor(l: mat, u: mat, p_: mat) { this.L = l; this.U = u; this.p = p_;}
