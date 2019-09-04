@@ -22,12 +22,12 @@ var mat_str = `
 
 var mat = m.read(mat_str);
 
-var x = mat.getCols(0,2).log();
-var y = mat.getCols(2,3).log();
+var x = mat.getCols(0,2);
+var y = mat.getCols(2,3);
 
 var logisticRegression = new LogisticRegression();
 logisticRegression.fit(x,y);
-
-console.log(logisticRegression);
+var predict_result = logisticRegression.predict(x);
+console.log("the predict result is " + predict_result);
 
 while(true) {}

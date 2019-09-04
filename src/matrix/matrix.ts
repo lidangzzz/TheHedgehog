@@ -210,7 +210,7 @@ class mat {
         if (typeof rightOperand == 'number'){
             return this.muls(rightOperand);
         }
-        //otherwise, minus the right operand as a matrix
+        //otherwise, multiply the right operand as a matrix
         return this.mul(rightOperand);
     }
 

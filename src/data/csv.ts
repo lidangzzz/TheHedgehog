@@ -13,6 +13,19 @@ function mat2csv(A:mat): string{
     return returnCSV;
 }
 
+function mat2csvWithNewLines(A:mat): string{
+    var returnCSV = "";
+    for (var i = 0; i < A.rows; i++) {
+        for (var j = 0; j < A.cols; j++) {
+            if (j == 0) { returnCSV += String(A.val[i][j]); }
+            else { returnCSV += (',' + String(A.val[i][j])); }
+        }
+        returnCSV += ';\n';
+    }
+
+    return returnCSV;
+}
+
 
 function csv2mat(strCSV: string): mat {
     var A = new mat();
@@ -43,4 +56,4 @@ function csv2mat(strCSV: string): mat {
 }
 
 
-export { mat2csv ,csv2mat};
+export { mat2csv ,csv2mat, mat2csvWithNewLines};
