@@ -171,6 +171,11 @@ class mat {
     }
     mul_gpu(rightMat: mat): mat { var result = m.mul_gpu(this, rightMat); this.copy(result); return this; }
 
+
+
+    // matrix plus operator overload
+    // mat1 + A
+    // the right operand A could be a matrix, a 2D array, a 1D array or a scalar number
     [Symbol.for('+')] (rightOperand: mat | number | number[] | number[][]): mat {
         //if right operand is a raw array of number or 2D array, initialize the matrix first
         if (Array.isArray(rightOperand)){
@@ -185,6 +190,9 @@ class mat {
         return this.add(rightOperand);
     }
 
+    // matrix minus operator overload
+    // mat1 - A
+    // the right operand A could be a matrix, a 2D array, a 1D array or a scalar number
     [Symbol.for('-')] (rightOperand: mat | number| number[] | number[][]): mat {
         //if right operand is a raw array of number or 2D array, initialize the matrix first
         if (Array.isArray(rightOperand)){
@@ -198,6 +206,9 @@ class mat {
         return this.clone().minus(rightOperand);
     }
 
+    // matrix multiply operator overload
+    // mat1 * A
+    // the right operand A could be a matrix, a 2D array, a 1D array or a scalar number
     [Symbol.for('*')] (rightOperand: mat | number| number[] | number[][]): mat {
 
         //if right operand is a raw array of number or 2D array, initialize the matrix first
@@ -214,7 +225,9 @@ class mat {
         return this.mul(rightOperand);
     }
 
-
+    // mat ^ N, the power of a matrix
+    // if N == -1, return the inverse matrix
+    // otherwise return the result of matrix multiplying itself 
     [Symbol.for('^')] (rightOperand: number): mat {
 
         if (this.rows != this.cols) throw new Error("This matrix does not support ^ operator");
@@ -234,6 +247,7 @@ class mat {
         return returnMatrix;
     }
 
+    // compare mat1 == mat2, which right operand mat2 could be a matrix object, 2D array, 1D array or a scalar number
     [Symbol.for('==')] (rightOperand: mat | number| number[] | number[][], EPSILON=0.0001): boolean {
 
         //if right operand is a raw array of number or 2D array, initialize the matrix first
@@ -253,7 +267,6 @@ class mat {
         //otherwise, minus the right operand as a matrix
         return this.equals(rightOperand);
     }
-
     
 
     //setter and getter

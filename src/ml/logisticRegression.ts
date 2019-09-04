@@ -38,7 +38,7 @@ class LogisticRegression {
     solver() {
         var th = this.init_weights;
         for (var iter = 0; iter < this.max_iteration; iter++) {
-            var h = sigmoid(this.x.mul(th));
+            var h = sigmoid(this.x * th);
             th = th + ( this.x.T() * (this.y - h)  ) * (this.alpha/this.x.rows);
         }
         this.weight = th;
