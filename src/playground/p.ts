@@ -4,6 +4,15 @@ import * as m from '../app';
 import { log } from 'util';
 import { LogisticRegression } from '../ml/logisticRegression';
 
+
+var a = new m.mat().random(100,100);
+console.log(a);
+var b = m.inverse(a);
+console.log(b);
+
+while (1){}
+
+
 var mat_str = `
     15    20     0
     20    30     1

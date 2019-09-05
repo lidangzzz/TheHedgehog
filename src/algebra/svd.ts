@@ -1,6 +1,6 @@
 ﻿import { mat } from '../matrix/matrix';
 
-//Reference: https://github.com/stardisblue/svdjs/blob/master/src/index.ts
+//Source code from: https://github.com/stardisblue/svdjs/blob/master/src/index.ts
 //Author: stardisblue
 
 class SVDresult {
