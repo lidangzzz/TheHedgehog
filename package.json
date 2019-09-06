@@ -2,7 +2,7 @@
   "name": "thehedgehog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.ts",
   "dependencies": {
     "@types/mathjs": "^6.0.2",
     "@types/node": "^12.7.2",
