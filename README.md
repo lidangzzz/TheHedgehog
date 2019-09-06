@@ -1,5 +1,5 @@
-# hedgehog
-**hedgehog** is a TypeScript library for matrix computation, linear algebra and machine learning. It contains some great features such as:
+# TheHedgehog
+**TheHedgehog** is a TypeScript library for matrix computation, linear algebra and machine learning. It contains some great features such as:
 
 * GPU Acceleration on some of algorithms with GPU.js by WebGL;
 
