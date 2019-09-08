@@ -1,6 +1,6 @@
 {
   "name": "thehedgehog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/app.js",
   "types": "lib/main.d.ts",
@@ -21,9 +21,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build_d_ts && npm run build_babel",
-    "build_babel": "babel src -d lib --extensions \".ts\"",
-    "build_d_ts": "tsc --declaration --allowSyntheticDefaultImports --target esnext --outDir lib"
+    "build": "npm run build_babel",
+    "build_babel": "babel src -d lib --extensions \".ts\""
   },
   "author": "",
   "license": "ISC"
