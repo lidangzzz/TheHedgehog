@@ -2,7 +2,8 @@
   "name": "thehedgehog",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.ts",
+  "main": "lib/app.js",
+  "types": "lib/main.d.ts",
   "dependencies": {
     "@types/mathjs": "^6.0.2",
     "@types/node": "^12.7.2",
@@ -20,7 +21,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib --extensions \".ts\""
+    "build": "npm run build_d_ts && npm run build_babel",
+    "build_babel": "babel src -d lib --extensions \".ts\"",
+    "build_d_ts": "tsc --declaration --allowSyntheticDefaultImports --target esnext --outDir lib"
   },
   "author": "",
   "license": "ISC"
