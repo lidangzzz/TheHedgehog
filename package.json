@@ -1,9 +1,9 @@
 {
   "name": "thehedgehog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "lib/app.js",
-  "types": "lib/main.d.ts",
+  "types": "lib/app.d.ts",
   "dependencies": {
     "@types/mathjs": "^6.0.2",
     "@types/node": "^12.7.2",
