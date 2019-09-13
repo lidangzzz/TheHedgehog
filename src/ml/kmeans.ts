@@ -1,4 +1,5 @@
 import * as m from '../app';
+import { xT_mul_x } from '../matrix/operator';
 
 //KMeans is the implementation of K-Means algorithm
 export class KMeans
@@ -109,6 +110,14 @@ export class KMeans
             //push this data into the centroids vector
             this.centroids.push(this.x.val[n_indices[i]]);
         }
+    }
+
+    //get labels of sample data
+    labels(): number[]{ return this.indexOfCluster; }
+
+    //todo: predict
+    predict(x_: m.mat){
+        //TODO
     }
     
 }

@@ -88,5 +88,11 @@ var dataset = m.read(`
 
 export function kmeansUnitTest(){
     var kmeans = new m.KMeans();
+
+    //setup the number of clusters
     kmeans.n_clusters = 4;
+
+    kmeans.fit(dataset);
+
+    console.log(kmeans.indexOfCluster);
 }
