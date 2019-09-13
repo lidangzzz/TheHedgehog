@@ -7,7 +7,7 @@ export function read(input: string): mat {
         for (var i = 0; i < inputLines.length; i++) {
             var currentRow = [];
             var currentLine = inputLines[i];
-            var currentTextValues = currentLine.split(/[ ,]+/);
+            var currentTextValues = currentLine.split(/[ ,	]+/);
             currentTextValues.forEach(function (textValue) {
                 if (textValue.length > 0) {
                     currentRow.push(Number(textValue));
@@ -16,7 +16,6 @@ export function read(input: string): mat {
             if (currentRow.length == 0) continue;
             arrayOfValues.push(currentRow);
         }
-
 
 
         var ret = new mat(arrayOfValues);

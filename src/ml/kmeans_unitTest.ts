@@ -92,6 +92,7 @@ export function kmeansUnitTest(){
     //setup the number of clusters
     kmeans.n_clusters = 4;
 
+    console.log(dataset.toString());
     kmeans.fit(dataset);
 
     console.log(kmeans.labels());

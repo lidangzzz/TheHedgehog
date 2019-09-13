@@ -110,6 +110,8 @@ export class KMeans
             //push this data into the centroids vector
             this.centroids.push(this.x.val[n_indices[i]]);
         }
+
+        console.log(this.centroids);
     }
 
     //get labels of sample data
