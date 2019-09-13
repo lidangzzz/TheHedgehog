@@ -87,5 +87,6 @@ var dataset = m.read(`
 
 
 export function kmeansUnitTest(){
-    
+    var kmeans = new m.KMeans();
+    kmeans.n_clusters = 4;
 }

@@ -67,7 +67,7 @@ export class KMeans
                 }
 
                 //update the cluster information of data i
-                if (this.indexOfCluster[i] != minCentroidIndex)
+                if (Math.abs(this.indexOfCluster[i] - minCentroidIndex) >= this.tolerance)
                 {
                     if_cluster_is_changed = true;
                     this.indexOfCluster[i] = minCentroidIndex;
