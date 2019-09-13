@@ -82,7 +82,7 @@ export class KMeans
 
                 //initialize a vector of X.cols zeros
                 var mean_value = Array(this.x.cols).fill(0);
-                var counterOfDataInCurrentCluster =0l
+                var counterOfDataInCurrentCluster =0;
                 for (var indexofX =0;indexofX < this.x.rows;indexofX++){
                     if (this.indexOfCluster[indexofX] == i) {
                         mean_value = add(mean_value, this.x.val[indexofX] );
@@ -100,7 +100,7 @@ export class KMeans
     //initialize N centroids by randomly picking N samples
     initializeNCentroids(){
         var n_indices = [];
-
+        this.centroids = [];
         //pick up n random number
         for (var i=0;i<this.n_clusters;i++)
         {

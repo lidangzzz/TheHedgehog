@@ -94,5 +94,7 @@ export function kmeansUnitTest(){
 
     kmeans.fit(dataset);
 
-    console.log(kmeans.indexOfCluster);
+    console.log(kmeans.labels());
 }
+
+kmeansUnitTest();
