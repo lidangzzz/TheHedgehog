@@ -376,6 +376,37 @@ class mat {
 
     //output the whole information to console
     log(): mat { console.log(this); return this; }  //output in console
+
+    //append matrix x to the bottom
+    //A =  [A]
+    //     [x]
+    appendInRow(x_:mat): mat{
+        var x = x_.clone();
+        if (x.cols != this.cols){
+            throw new Error('Dimension does not match on  appendInRow()');
+        }
+
+        this.val.push(...x.val);
+        this.rows +=x.rows;
+
+        return this;
+    }
+
+    //append matrix x to the right
+    //A = [A|x]
+    appendInColumn(x_:mat):mat{
+        var x = x_.clone();
+        if (x.rows != this.rows){
+            throw new Error('Dimension does not match on  appendInColumn()');
+        }
+
+        for (var i=0;i<this.rows;i++){
+            this.val[i].push(...x.val[i]);
+        }
+        this.cols += x.cols;
+
+        return this;
+    }
 }
 
 export { mat };
