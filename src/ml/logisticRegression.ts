@@ -55,9 +55,9 @@ class LogisticRegression {
 
         //calculate the output matrix of y
         var y_predict = x_test * this.weight;
-        console.log("y predict is "+ y_predict);
+
         var y_probability = sigmoid(y_predict);
-        console.log("y hp is "+ y_probability);
+
         for (var i=0;i<x_.rows;i++){
             if (y_probability.val[i][0]>=0.5) {
                 returnMatrix.val[i][0]=1;

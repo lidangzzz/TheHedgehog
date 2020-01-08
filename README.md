@@ -6,3 +6,8 @@
 * Operator overloading using bable plugins;
 
 * Support for CSV, JSON and other data format.
+
+To build this project, please run
+```
+npm run build
+```
