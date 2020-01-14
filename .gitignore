@@ -181,6 +181,4 @@ lib/ndarray/ndarray.js
 lib/playground/p.js
 lib/stats/zScoreOfMat.js
 lib/unitTest.js
-README.md
-src/ml/logisticRegression.ts
-src/ml/logisticRegressionGPU.ts
+lib/ml/svm.js
