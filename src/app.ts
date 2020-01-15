@@ -15,4 +15,3 @@ export * from './matrix/vector';
 export * from './data/text';
 export * from './algebra/qr';
 export * from './algebra/det';
-
