@@ -5,19 +5,19 @@
   "main": "lib/app.js",
   "types": "lib/app.d.ts",
   "dependencies": {
-    "@types/mathjs": "^6.0.2",
-    "@types/node": "^12.7.2",
+    "@types/mathjs": "^6.0.3",
+    "@types/node": "^12.12.24",
     "assert": "^2.0.0",
     "babel-core": "^6.26.3",
     "babel-plugin-overload": "0.0.2",
-    "gpu.js": "^2.0.0-rc.26",
-    "mathjs": "^6.2.1"
+    "gpu.js": "^2.5.0",
+    "mathjs": "^6.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-typescript": "^7.3.3"
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
