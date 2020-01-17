@@ -96,6 +96,7 @@ export function kmeansUnitTest(){
     kmeans.fit(dataset);
 
     console.log(kmeans.labels());
+    console.log("k means unit test finished.");
 }
 
 kmeansUnitTest();
