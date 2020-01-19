@@ -1,8 +1,8 @@
-﻿import * as m from '../app';
-import * as mathjs from 'mathjs';
+﻿import { mat } from '../matrix/matrix';
+import {det as mathjs_det} from 'mathjs';
 
-function det(x:m.mat):number{
-    return mathjs.det(x.val);
+function det(x:mat):number{
+    return mathjs_det(x.val);
 }
 
 export {det};

@@ -1,4 +1,4 @@
-﻿import { mat } from '../app';
+﻿import { mat } from '../matrix/matrix';
 
 export function read(input: string): mat {
     try {

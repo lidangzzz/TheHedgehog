@@ -1,5 +1,4 @@
-﻿import { mat } from '../matrix/matrix';
-import * as op from '../app';
+﻿import { mat, mul } from '../matrix/matrix';
 import { inverse } from '../algebra/inverse';
 
 
@@ -30,7 +29,7 @@ class LinearRegression {
         //calculate w = (X.T() * X)^-1 * X.T() * y
 
         //(X.T() * X)
-        var xT_mul_x = op.mul(x.T(), x).log();
+        var xT_mul_x = mul(x.T(), x).log();
 
         //(X.T() * X)^-1 
         var xT_mul_x_inverse = inverse(xT_mul_x).log();

@@ -1,5 +1,4 @@
-import * as m from '../app';
-import { xT_mul_x } from '../matrix/operator';
+import { mat } from '../matrix/matrix';
 
 //KMeans is the implementation of K-Means algorithm
 export class KMeans
@@ -22,7 +21,7 @@ export class KMeans
     //distance[i] is the distance of  ||  x[i] - centroids of cluster of x[i] ||
     distanceToCentroid:number[];
 
-    x: m.mat;
+    x: mat;
 
     constructor(){ 
         this.n_clusters = 8;
@@ -34,7 +33,7 @@ export class KMeans
     //input matrix: x_: M by N matrix
     //each row is a vector of N-dimension sample
     //and there are M samples in total
-    fit(x_:m.mat){
+    fit(x_: mat){
 
         //copy data into this.x
         this.x = x_.clone(); var N = this.x.rows; 
@@ -118,7 +117,7 @@ export class KMeans
     labels(): number[]{ return this.indexOfCluster; }
 
     //todo: predict
-    predict(x_: m.mat){
+    predict(x_: mat){
         //TODO
     }
     

@@ -1,8 +1,10 @@
-import * as  m from '../app';
+import {KMeans} from './kmeans';
+import {mat} from '../matrix/matrix';
+import {read} from '../data/text'
 var assert = require('assert');
 
 
-var dataset = m.read(`
+var dataset = read(`
 1.658985	4.285136
 -3.453687	3.424321
 4.838138	-1.151539
@@ -87,7 +89,7 @@ var dataset = m.read(`
 
 
 export function kmeansUnitTest(){
-    var kmeans = new m.KMeans();
+    var kmeans = new KMeans();
 
     //setup the number of clusters
     kmeans.n_clusters = 4;
@@ -96,7 +98,6 @@ export function kmeansUnitTest(){
     kmeans.fit(dataset);
 
     console.log(kmeans.labels());
-    console.log("k means unit test finished.");
 }
 
 kmeansUnitTest();

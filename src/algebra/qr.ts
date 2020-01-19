@@ -1,19 +1,19 @@
-import * as m from '../app';
-import * as mathjs from 'mathjs';
+import { mat } from '../matrix/matrix';
+import {qr as mathjs_qr} from 'mathjs';
 
 class QRResult{
-    Q:m.mat;
-    R:m.mat;
-    constructor(q:m.mat, r:m.mat){
+    Q:mat;
+    R:mat;
+    constructor(q:mat, r:mat){
         this.Q = q;
         this.R = r;
     }
 }
 
 //solving QR decomposition from mathjs.qr
-function QR(x:m.mat):QRResult {
-    var result = mathjs.qr(x.val);
-    return new QRResult(new m.mat(result.Q), new m.mat(result.R));
+function QR(x:mat):QRResult {
+    var result = mathjs_qr(x.val);
+    return new QRResult(new mat(result.Q), new mat(result.R));
 }
 
 export{QR, QRResult};

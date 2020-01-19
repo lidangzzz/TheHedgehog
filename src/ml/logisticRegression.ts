@@ -1,22 +1,23 @@
-﻿import * as m from '../app';
+﻿import {mat} from '../matrix/matrix';
+import {zScoreOfMatrix} from '../stats/zScoreOfMat';
 
 class LogisticRegression {
 
     alpha: number;
     max_iteration: number;
-    x: m.mat;
-    y: m.mat;
-    init_weights: m.mat;
-    weight : m.mat;
+    x: mat;
+    y: mat;
+    init_weights: mat;
+    weight : mat;
     constructor() {
         this.alpha = 0.1;
         this.max_iteration = 1000;
     }
 
-    fit(x_: m.mat, y: m.mat) {
+    fit(x_: mat, y: mat) {
 
         //normalize x
-        var x_norm = m.zScoreOfMatrix(x_);
+        var x_norm = zScoreOfMatrix(x_);
 
         //add a column of ones on the right for bias by using resize function
         this.x = x_norm.resize(x_norm.rows, x_norm.cols + 1, 1);
@@ -29,7 +30,7 @@ class LogisticRegression {
         }
 
         //initialize the weights
-        this.init_weights = new m.mat().zeros(this.x.cols, 1);
+        this.init_weights = new mat().zeros(this.x.cols, 1);
 
         //call the solver
         this.solver();
@@ -44,11 +45,11 @@ class LogisticRegression {
         this.weight = th;
     }
 
-    predict(x_:m.mat):m.mat{
-        var returnMatrix = new m.mat().zeros(x_.rows, 1);
+    predict(x_:mat):mat{
+        var returnMatrix = new mat().zeros(x_.rows, 1);
 
         //normalize x
-        var x_norm = m.zScoreOfMatrix(x_);
+        var x_norm = zScoreOfMatrix(x_);
 
         //add a column of ones on the right for bias by using resize function
         var x_test = x_norm.resize(x_norm.rows, x_norm.cols + 1, 1);
@@ -72,8 +73,8 @@ class LogisticRegression {
 
 }
 
-function sigmoid(x: m.mat): m.mat {
-    var returnMatrix = new m.mat().zeros(x.rows, x.cols);
+function sigmoid(x: mat): mat {
+    var returnMatrix = new mat().zeros(x.rows, x.cols);
     for (var i = 0; i < x.rows; i++) {
         for (var j = 0; j < x.cols; j++) {
             returnMatrix.val[i][j] = 1 / (1 + Math.pow(Math.E, x.val[i][j] * (-1)) );
@@ -82,8 +83,8 @@ function sigmoid(x: m.mat): m.mat {
     return returnMatrix;
 }
 
-function logX(x: m.mat): m.mat {
-    var returnMatrix = new m.mat().zeros(x.rows, x.cols);
+function logX(x: mat): mat {
+    var returnMatrix = new mat().zeros(x.rows, x.cols);
     for (var i = 0; i < x.rows; i++) {
         for (var j = 0; j < x.cols; j++) {
             returnMatrix.val[i][j] = Math.log(x.val[i][j]);
@@ -92,8 +93,8 @@ function logX(x: m.mat): m.mat {
     return returnMatrix;
 }
 
-function logOneMinusX(x: m.mat): m.mat {
-    var returnMatrix = new m.mat().zeros(x.rows, x.cols);
+function logOneMinusX(x: mat): mat {
+    var returnMatrix = new mat().zeros(x.rows, x.cols);
     for (var i = 0; i < x.rows; i++) {
         for (var j = 0; j < x.cols; j++) {
             returnMatrix.val[i][j] = 1-Math.log(x.val[i][j]);
