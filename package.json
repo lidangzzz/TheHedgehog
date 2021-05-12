@@ -11,7 +11,7 @@
     "babel-core": "^6.26.3",
     "babel-plugin-overload": "0.0.2",
     "gpu.js": "^2.5.0",
-    "mathjs": "^6.5.0"
+    "mathjs": "^7.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
